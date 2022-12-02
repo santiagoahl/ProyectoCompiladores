@@ -1,36 +1,12 @@
-/* #include <iostream> */
-/* #include "node.h" */
-
-/* extern NBlock* programBlock; */
-/* /1* extern NExpression* exp; *1/ */
-/* extern int yyparse(); */
-
-/* int main(int argc, char **argv) */
-/* { */
-/*     yyparse(); */
-/*     /1* std::cout << "Hello World!"; *1/ */
-/*     std::cout << programBlock << std::endl; */
-/*     /1* std::cout << exp << std::endl; *1/ */
-/*     return 0; */
-/* } */
-
-#include <iostream>
-#include "codegen.h"
 #include "node.h"
+#include <iostream>
 
-using namespace std;
-
+extern NBlock *programBlock;
 extern int yyparse();
-extern NBlock* programBlock;
 
-int main(int argc, char **argv)
-{
-    yyparse();
-    std::cout << programBlock << std::endl;
-
-    CodeGenContext context;
-    context.generateCode(*programBlock);
-    context.runCode();
-    
-    return 0;
+int main(int argc, char **argv) {
+  yyparse();
+  std::cout << "Hello World!";
+  std::cout << programBlock << std::endl;
+  return 0;
 }
