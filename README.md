@@ -2,7 +2,7 @@
   <br>
   <a href="https://github.com/eguar11011/ProyectoCompiladores"><img src="https://cdn-icons-png.flaticon.com/512/2748/2748829.png" alt="Compilers!" width="200"></a>
   <br>
-  ProyectoCompiladores
+  Proyecto Compiladores
   <br>
 </h1>
 
