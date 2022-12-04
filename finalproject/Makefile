@@ -1,11 +1,14 @@
 all: parser
 
 OBJS = parser.o  \
+       codegen.o \
        main.o    \
        tokens.o  \
+       corefn.o  \
+	   native.o  \
 
 LLVMCONFIG = llvm-config
-CPPFLAGS = `$(LLVMCONFIG) --cppflags` -std=c++11
+CPPFLAGS = `$(LLVMCONFIG) --cppflags` 
 LDFLAGS = `$(LLVMCONFIG) --ldflags` -lpthread -ldl -lz -lncurses -rdynamic
 LIBS = `$(LLVMCONFIG) --libs`
 
