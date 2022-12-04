@@ -1,19 +1,3 @@
-/* #include <iostream> */
-/* #include "node.h" */
-
-/* extern NBlock* programBlock; */
-/* /1* extern NExpression* exp; *1/ */
-/* extern int yyparse(); */
-
-/* int main(int argc, char **argv) */
-/* { */
-/*     yyparse(); */
-/*     /1* std::cout << "Hello World!"; *1/ */
-/*     std::cout << programBlock << std::endl; */
-/*     /1* std::cout << exp << std::endl; *1/ */
-/*     return 0; */
-/* } */
-
 #include <iostream>
 #include "codegen.h"
 #include "node.h"
@@ -23,14 +7,21 @@ using namespace std;
 extern int yyparse();
 extern NBlock* programBlock;
 
+void createCoreFunctions(CodeGenContext& context);
+
 int main(int argc, char **argv)
 {
-    yyparse();
-    std::cout << programBlock << std::endl;
-
-    CodeGenContext context;
-    context.generateCode(*programBlock);
-    context.runCode();
-    
-    return 0;
+	yyparse();
+	cout << programBlock << endl;
+    // see http://comments.gmane.org/gmane.comp.compilers.llvm.devel/33877
+	InitializeNativeTarget();
+	InitializeNativeTargetAsmPrinter();
+	InitializeNativeTargetAsmParser();
+	CodeGenContext context;
+	createCoreFunctions(context);
+	context.generateCode(*programBlock);
+	context.runCode();
+	
+	return 0;
 }
+
